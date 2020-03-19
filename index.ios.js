@@ -54,7 +54,7 @@ export default class IamReact extends Component {
 
   async getAccounts() {
     try {
-      let response = await fetch('https://idp-iam-int.map.mandiant.com/api/v1/authenticate/accounts',
+      let response = await fetch('https://foo.com/api/v1/authenticate/accounts',
         {
           method: 'POST',
           headers: {
@@ -62,14 +62,14 @@ export default class IamReact extends Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email: 'harjeet.singh@fireeye.com'
+            email: 'jm@abc.com'
           })
         }
       );
       let responseJson = await response.json();
       console.log('POST accounts  =>', JSON.stringify(responseJson));
 
-      let responseSelectAcct = await fetch('https://idp-iam-int.map.mandiant.com/api/v1/authenticate/accounts/select',
+      let responseSelectAcct = await fetch('https://foo.com/api/v1/authenticate/accounts/select',
         {
           method: 'POST',
           headers: {
@@ -82,15 +82,15 @@ export default class IamReact extends Component {
                 "response_type": "code",
                 "client_id": "gateway-hjn2t7wixihk8s1k6iajyhf_e",//gateway-hjn2t7wixihk8s1k6iajyhf_e",
                 "scope": "openid",
-                "redirect_uri": "https://api-iam-int.map.mandiant.com:443/oidc",
-                "state": "https://api-iam-int.map.mandiant.com:443/api/v1/session/login?redirect_uri=https://console-iam-int.map.mandiant.com/homepage&cacheBuster=2.0.0_242"
+                "redirect_uri": "https://foo.com:443/oidc",
+                "state": "https://foo.com:443/api/v1/session/login?redirect_uri=https://foo.com/homepage&cacheBuster=2.0.0_242"
               },
               "account": {
                 "user_id": "5f11b346-1c6b-4a3b-a592-19ea72eeba2c",
-                "username": "harjeet.singh@fireeye.com",
+                "username": "jm@abc.com",
                 "org_id": "c17d5e19-f06f-4d84-aca1-ba4e1e31d872",
-                "orgname": "FireEye",
-                "email": "harjeet.singh@fireeye.com",
+                "orgname": "ABC",
+                "email": "js@abc.com",
                 "user_type": "primary"
               }
             }
@@ -102,14 +102,14 @@ export default class IamReact extends Component {
 
       console.log('POST select account  =>', JSON.stringify(responseJsonSelectAcct));
       
-      let responsePassword = await fetch('https://idp-iam-int.map.mandiant.com/api/v1/authenticate/password',
+      let responsePassword = await fetch('https://foo.com/api/v1/authenticate/password',
         {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({"user_id":"5f11b346-1c6b-4a3b-a592-19ea72eeba2c","password":"FindEvil!234"})
+          body: JSON.stringify({"user_id":"5f11b346-1c6b-4a3b-a592-19ea72eeba2c","password":"ggsgs!234"})
         }
       );
       let responseJsonPassword = await responsePassword.json();
